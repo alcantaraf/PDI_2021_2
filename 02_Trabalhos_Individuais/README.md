@@ -1,4 +1,4 @@
-### Trabalhos Individuais
+## Trabalhos Individuais
 
 #### Descrição:
 
