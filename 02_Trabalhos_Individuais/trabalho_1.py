@@ -87,6 +87,7 @@ def search_nearest(img, search_range, row, collum, validation):
         c1 = collum + search_range 
     distance = np.sqrt((r0)**2+(c0)**2)
     near = img[r0,c0]
+    
     for i in range(r0+1,r1,1):
         for j in range(c0+1,c1,1):
             distance1 = np.sqrt((row - i)**2+(collum - j)**2)
@@ -100,7 +101,10 @@ def nni_interpolation(img, set_points,jumps):
     for i in range(set_points.shape[0]):
         for j in range(set_points.shape[1]):
             if set_points[i,j] == 0:
-                image[i,j] = search_nearest(img, jumps, i, j, set_points)
+                #image[i,j] = search_nearest(img, jumps, i, j, set_points)
+                dist = np.sqrt((i-set_points[:,0])**2+(j-set_points[:,1])**2)
+                ind = np.where(dist==dist.min())
+                image[i,j,:] = img(ind[0][0],:)
     return image
 
 def upresize_p2(img, ampliation):
