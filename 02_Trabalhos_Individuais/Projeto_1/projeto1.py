@@ -53,6 +53,7 @@ class buttons(object):
 
         # Subplots
         fig = plt.figure()
+        
         ax1 = plt.subplot(121)
         ax2 = plt.subplot(322)
         ax3 = plt.subplot(324)
@@ -82,14 +83,15 @@ class buttons(object):
         print(res_logdiv)
         print(res_logI)
         ax4.plot(res_logI,res_logdiv, '-')
-        ax4.set_ylabel(r'log($\Delta$$I_L$/$I_L$)')
+        ax4.set_ylabel(r'log($\frac{\Delta I_L}{I_L}$)')
         ax4.set_xlabel(r'$log(I_L)$')
         print("Finalizado")
 
         plt.tight_layout()
         fname = input("Nome da Figura:")
         fig.savefig(fname + '.png')
-    
+        figManager1 = plt.get_current_fig_manager()
+        figManager1.window.showMaximized()
         plt.show()
 
   
